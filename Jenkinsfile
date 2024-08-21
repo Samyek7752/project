@@ -13,7 +13,7 @@ label {
 		stage ('CLEAN_OLD_M2') {
 			
 			steps {
-				sh "rm -rf /home/saccount/.m2/repository"
+				sh "rm -rf root/.m2"
 				
 			}
 			
@@ -23,18 +23,18 @@ label {
 		
 			steps {
 						
-						sh "mvn clean package"
+						sh "mvn clean install"
 			
 			}
 			
 		
 		}
 		
-		stage ('COPY_WAR_TO_Server'){
+		stage ('COPY_WAR_TO_slave_Server'){
 		
 				steps {
 						
-						sh "scp -r target/LoginWebApp.war saccount@10.0.2.51:/data/project/wars"
+						echo "thiss id not done yet, edit here now"
 
 						}
 				
