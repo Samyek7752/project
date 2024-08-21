@@ -24,7 +24,7 @@ pipeline {
         stage('3.Tomcat_Deploy') {
             steps {
                 // Copy WAR file to Tomcat webapps directory
-                sh "cp -r /root/data/project-myapp/LoginWebApp.war /root/tom/apache-tomcat-9.0.93/webapps"
+                sh "cp -r /root/data/project-myapp/target/LoginWebApp.war /root/tom/apache-tomcat-9.0.93/webapps"
                 
                 // Navigate to Tomcat bin directory and start Tomcat
                 dir("/root/tom/apache-tomcat-9.0.93/bin") {
