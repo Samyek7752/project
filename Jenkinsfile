@@ -16,9 +16,8 @@ pipeline {
     
         stage('MAVEN_BUILD') {
             steps {
-                dir("/root/data/project-myapp") {  // Corrected syntax
-                    sh "mvn clean install"
-                }
+                // Run Maven build
+                sh "mvn clean install"
             }
         }
         
