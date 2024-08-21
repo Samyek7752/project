@@ -8,23 +8,28 @@ pipeline {
     
     stages {
         
-        stage('CLEAN_OLD_M2') {
+        stage('1.CLEAN_OLD_M2') {
             steps {
                 sh "rm -rf /root/.m2"  // Corrected path
             }
         }
     
-        stage('MAVEN_BUILD') {
+        stage('2.MAVEN_BUILD') {
             steps {
                 // Run Maven build
                 sh "mvn clean install"
             }
         }
         
-        stage('COPY_WAR_TO_slave_Server') {
+        stage('3.Tomcat_Deploy') {
             steps {
-                // Placeholder for copying WAR to slave server
-                echo "This is not done yet, edit here now"
+                // Copy WAR file to Tomcat webapps directory
+                sh "cp -r /root/data/project-myapp/LoginWebApp.war /root/tom/apache-tomcat-9.0.93/webapps"
+                
+                // Navigate to Tomcat bin directory and start Tomcat
+                dir("/root/tom/apache-tomcat-9.0.93/bin") {
+                    sh "./startup.sh"
+                }
             }
         }
     }
