@@ -2,7 +2,7 @@ pipeline {
     agent {
         label {
             label "built-in"
-            customWorkspace "/data/project-myapp"
+            customWorkspace "/root/data/project-myapp"
         }
     }
     
