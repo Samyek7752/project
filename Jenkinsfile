@@ -16,8 +16,9 @@ pipeline {
     
         stage('MAVEN_BUILD') {
             steps {
-                // Ensure Maven is installed on this node
-                sh "mvn clean install"
+                dir("/root/data/project-myapp") {  // Corrected syntax
+                    sh "mvn clean install"
+                }
             }
         }
         
